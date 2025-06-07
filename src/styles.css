@@ -144,11 +144,11 @@
         grid-template-columns: 1fr;
     }
     
-    .greeting-title {
+.greeting-title {
         font-size: 1.5rem;
-    }
-    
-    .greeting-subtitle {
+}
+
+.greeting-subtitle {
         font-size: 1rem;
     }
 } 

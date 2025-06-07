@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - Maily Daniela Guarin Romero</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f3e5f5, #fff0f5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f3e5f5, #fff0f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .splash-screen.fade-out {
+            opacity: 0;
+            transform: scale(1.2) rotate(5deg);
+            filter: blur(10px);
+        }
+
+        .splash-content {
+            text-align: center;
+            color: #9c27b0;
+            padding: 2rem;
+            animation: float 3s ease-in-out infinite;
+            max-width: 90%;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .koala-container {
+            position: fixed;
+            bottom: 0px;
+            left: 20px;
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 15px 30px rgba(156, 39, 176, 0.4));
+            animation: koalaFloat 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .koala-container-right {
+            position: fixed;
+            bottom: 0px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 15px 30px rgba(156, 39, 176, 0.4));
+            animation: koalaFloatRight 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes koalaFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-10px) rotate(5deg) scale(1.05); }
+            50% { transform: translateY(0) rotate(0deg) scale(1); }
+            75% { transform: translateY(-10px) rotate(-5deg) scale(1.05); }
+        }
+
+        @keyframes koalaFloatRight {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-10px) rotate(-5deg) scale(1.05); }
+            50% { transform: translateY(0) rotate(0deg) scale(1); }
+            75% { transform: translateY(-10px) rotate(5deg) scale(1.05); }
+        }
+
+        .splash-name, .splash-message, .splash-ready {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            opacity: 0;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            animation: textFloat 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .splash-name {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border-right: 4px solid #9c27b0;
+            animation: typing 3.5s steps(40, end) forwards,
+                       blink-caret .75s step-end infinite,
+                       textFloat 3s ease-in-out infinite,
+                       gradientMove 8s ease infinite;
+            background: linear-gradient(45deg, #9c27b0, #e91e63, #ff4081);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .splash-message {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #9c27b0;
+            border-right: 4px solid #9c27b0;
+            animation: typing 3.5s steps(40, end) 3.5s forwards,
+                       blink-caret .75s step-end infinite,
+                       textFloat 3s ease-in-out infinite 0.5s;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(156, 39, 176, 0.3);
+        }
+
+        .splash-ready {
+            font-size: 2rem;
+            color: #e91e63;
+            border-right: 4px solid #e91e63;
+            animation: typing 3.5s steps(40, end) 7s forwards,
+                       blink-caret .75s step-end infinite,
+                       textFloat 3s ease-in-out infinite 1s;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0) rotateX(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotateX(5deg) scale(1.02); }
+        }
+
+        @keyframes typing {
+            from { width: 0; opacity: 1; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #9c27b0; }
+        }
+
+        .splash-loading {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3e5f5;
+            border-top: 3px solid #9c27b0;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatParticle 3s infinite;
+            opacity: 0.6;
+            filter: blur(1px);
+            mix-blend-mode: screen;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-40px) translateX(20px) scale(1.3) rotate(180deg); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #fff;
+            animation: sparkle 2s infinite;
+            filter: blur(1px);
+            box-shadow: 0 0 10px #fff;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+        }
+
+        .light-beam {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.1) 45%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0.1) 55%,
+                rgba(255,255,255,0) 100%);
+            transform: translateX(-100%);
+            animation: lightBeam 8s infinite;
+        }
+
+        @keyframes lightBeam {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-screen">
+        <div class="particles" id="particles"></div>
+        <div class="light-beam"></div>
+        <div class="splash-content">
+            <div class="koala-container" id="koalaAnimation"></div>
+            <div class="koala-container-right" id="koalaAnimationRight"></div>
+            <h1 class="splash-name">Maily Daniela Guarin Romero</h1>
+            <p class="splash-message">¡Bienvenido a mi página sobre los Juegos Olímpicos!</p>
+            <div class="splash-loading"></div>
+            <p class="splash-ready">¡Profe, preparado para ver mi trabajo? 💖</p>
+        </div>
+    </div>
+
+    <script>
+        // Cargar la animación del koala izquierdo
+        const koalaAnimation = lottie.loadAnimation({
+            container: document.getElementById('koalaAnimation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'public/Animation - 1749327319806.json'
+        });
+
+        // Cargar la animación del koala derecho
+        const koalaAnimationRight = lottie.loadAnimation({
+            container: document.getElementById('koalaAnimationRight'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'public/Animation - 1749327319806.json'
+        });
+
+        // Crear partículas mejoradas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#ec4899', '#f472b6', '#fbcfe8', '#fce7f3', '#fff', '#ffd1dc'];
+            const sizes = [4, 6, 8, 10, 12, 15];
+            
+            for (let i = 0; i < 250; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 4) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            // Agregar destellos
+            for (let i = 0; i < 75; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                particlesContainer.appendChild(sparkle);
+            }
+        }
+
+        // Inicializar partículas
+        createParticles();
+
+        // Redirigir con animación suave
+        setTimeout(() => {
+            const splashScreen = document.querySelector('.splash-screen');
+            splashScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'maily.html';
+            }, 2000);
+        }, 12000);
+    </script>
+</body>
+</html>
