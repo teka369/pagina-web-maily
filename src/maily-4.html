@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deportes Olímpicos de Verano e Invierno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #9c27b0;
+      --secondary-color: #e91e63;
+      --accent-color: #ff4081;
+      --text-color: #333;
+      --background-color: #fff;
+      --section-bg: #fff5f8;
+      --border-color: #f8bbd0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      background-image: radial-gradient(circle at 50% 50%, #fff5f8 0%, #fff 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-color);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: glow 2s ease-in-out infinite alternate;
+      position: relative;
+    }
+
+    h1::after {
+      content: '❀';
+      position: absolute;
+      right: 50%;
+      bottom: -20px;
+      transform: translateX(50%);
+      color: var(--accent-color);
+      font-size: 1.5rem;
+    }
+
+    section {
+      background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    thead {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    }
+
+    th {
+      padding: 15px;
+      text-align: left;
+      color: white;
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.3s ease;
+    }
+
+    tr {
+      transition: all 0.3s ease;
+    }
+
+    tr:hover {
+      background-color: rgba(156, 39, 176, 0.05);
+      transform: scale(1.01);
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(248, 187, 208, 0.1);
+    }
+
+    .font-medium {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px rgba(156, 39, 176, 0.2),
+                     0 0 10px rgba(156, 39, 176, 0.2),
+                     0 0 15px rgba(156, 39, 176, 0.2);
+      }
+      to {
+        text-shadow: 0 0 10px rgba(156, 39, 176, 0.3),
+                     0 0 20px rgba(156, 39, 176, 0.3),
+                     0 0 30px rgba(156, 39, 176, 0.3);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="navbar-container"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    <!-- Tabla de Verano -->
+    <section>
+      <h1>Deportes Olímpicos de Verano</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Deporte</th>
+            <th>Disciplinas</th>
+            <th>Eventos principales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Atletismo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Atletismo</td>
+            <td class="px-6 py-4">
+              Carreras (varias distancias), marcha, saltos, lanzamientos, decatlón, heptatlón, relevos, entre otros.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Bádminton</td>
+            <td class="px-6 py-4 whitespace-nowrap">Bádminton</td>
+            <td class="px-6 py-4">
+              Individual masculino, individual femenino, dobles masculinos, dobles femeninos, dobles mixtos.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Baloncesto</td>
+            <td class="px-6 py-4 whitespace-nowrap">Baloncesto, baloncesto 3×3</td>
+            <td class="px-6 py-4">
+              Baloncesto 5×5 masculino, baloncesto 5×5 femenino, baloncesto 3×3 masculino, baloncesto 3×3 femenino.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Balonmano</td>
+            <td class="px-6 py-4 whitespace-nowrap">Balonmano</td>
+            <td class="px-6 py-4">Torneo masculino, torneo femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Boxeo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Boxeo</td>
+            <td class="px-6 py-4">Diferentes categorías de peso en masculino y femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Breaking</td>
+            <td class="px-6 py-4 whitespace-nowrap">Breaking</td>
+            <td class="px-6 py-4">Breaking 1vs1 masculino, breaking 1vs1 femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Ciclismo</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              BMX Freestyle, BMX Racing, ciclismo en ruta, ciclismo en pista
+            </td>
+            <td class="px-6 py-4">
+              BMX freestyle park, BMX racing, ciclismo en ruta (carreras en línea y contrarreloj), ciclismo en pista (velocidad, persecución, keirin, entre otros).
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Deportes acuáticos</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              Natación, maratón acuática, saltos de trampolín, waterpolo, natación artística
+            </td>
+            <td class="px-6 py-4">
+              Natación (varias distancias y estilos), maratón acuática (10 km), saltos (plataformas y trampolín), waterpolo (equipos masculinos y femeninos), natación artística (rutinas individuales y de equipo).
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Escalada deportiva</td>
+            <td class="px-6 py-4 whitespace-nowrap">Escalada deportiva</td>
+            <td class="px-6 py-4">
+              Boulder y lead combinado (masculino y femenino), velocidad (masculino y femenino).
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Esgrima</td>
+            <td class="px-6 py-4 whitespace-nowrap">Esgrima</td>
+            <td class="px-6 py-4">Individual masculino y femenino, equipos masculinos y femeninos.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Fútbol</td>
+            <td class="px-6 py-4 whitespace-nowrap">Fútbol</td>
+            <td class="px-6 py-4">Torneo masculino, torneo femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Gimnasia</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              Gimnasia artística, gimnasia rítmica, gimnasia en trampolín
+            </td>
+            <td class="px-6 py-4">
+              Gimnasia artística (equipos, individual, aparatos), gimnasia rítmica (individual y conjuntos), trampolín (masculino y femenino).
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Golf</td>
+            <td class="px-6 py-4 whitespace-nowrap">Golf</td>
+            <td class="px-6 py-4">Individual masculino, individual femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Halterofilia</td>
+            <td class="px-6 py-4 whitespace-nowrap">Halterofilia</td>
+            <td class="px-6 py-4">Diferentes categorías de peso en masculino y femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Hípica</td>
+            <td class="px-6 py-4 whitespace-nowrap">Concursos ecuestres, doma, saltos</td>
+            <td class="px-6 py-4">Concurso completo, doma, saltos.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Hockey sobre césped</td>
+            <td class="px-6 py-4 whitespace-nowrap">Hockey sobre césped</td>
+            <td class="px-6 py-4">Torneo masculino, torneo femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Judo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Judo</td>
+            <td class="px-6 py-4">Diferentes categorías de peso en masculino y femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Lucha</td>
+            <td class="px-6 py-4 whitespace-nowrap">Lucha grecorromana, lucha libre</td>
+            <td class="px-6 py-4">Diferentes categorías de peso en masculino y femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Skateboarding</td>
+            <td class="px-6 py-4 whitespace-nowrap">Skateboarding</td>
+            <td class="px-6 py-4">
+              Street masculino, street femenino, park masculino, park femenino.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Pentatlón moderno</td>
+            <td class="px-6 py-4 whitespace-nowrap">Pentatlón moderno</td>
+            <td class="px-6 py-4">Competición masculina, competición femenina.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Piragüismo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Piragüismo en esprint, piragüismo en eslalon</td>
+            <td class="px-6 py-4">
+              Diferentes distancias y categorías en masculino y femenino.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Remo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Remo</td>
+            <td class="px-6 py-4">Diferentes clases de embarcaciones en masculino y femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Rugby Sevens</td>
+            <td class="px-6 py-4 whitespace-nowrap">Rugby Sevens</td>
+            <td class="px-6 py-4">Torneo masculino, torneo femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Surf</td>
+            <td class="px-6 py-4 whitespace-nowrap">Surf</td>
+            <td class="px-6 py-4">Competición masculina, competición femenina.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Taekwondo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Taekwondo</td>
+            <td class="px-6 py-4">Diferentes categorías de peso en masculino y femenino.</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Tenis</td>
+            <td class="px-6 py-4 whitespace-nowrap">Tenis</td>
+            <td class="px-6 py-4">
+              Individual masculino, individual femenino, dobles masculinos, dobles femeninos, dobles mixtos.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Tenis de mesa</td>
+            <td class="px-6 py-4 whitespace-nowrap">Tenis de mesa</td>
+            <td class="px-6 py-4">
+              Individual masculino, individual femenino, dobles mixtos, equipos masculinos, equipos femeninos.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Tiro</td>
+            <td class="px-6 py-4 whitespace-nowrap">Tiro</td>
+            <td class="px-6 py-4">
+              Rifle, pistola, escopeta (masculino, femenino, mixto).
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Tiro con arco</td>
+            <td class="px-6 py-4 whitespace-nowrap">Tiro con arco</td>
+            <td class="px-6 py-4">
+              Individual masculino, individual femenino, equipos mixtos.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Triatlón</td>
+            <td class="px-6 py-4 whitespace-nowrap">Triatlón</td>
+            <td class="px-6 py-4">
+              Individual masculino, individual femenino, relevos mixtos.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Vela</td>
+            <td class="px-6 py-4 whitespace-nowrap">Vela</td>
+            <td class="px-6 py-4">
+              Diferentes clases de embarcaciones en masculino, femenino y mixto.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Voleibol</td>
+            <td class="px-6 py-4 whitespace-nowrap">Voleibol, voleibol de playa</td>
+            <td class="px-6 py-4">
+              Voleibol masculino, voleibol femenino, voleibol de playa masculino, voleibol de playa femenino.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tabla de Invierno -->
+    <section>
+      <h1>Deportes Olímpicos de Invierno</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Deporte</th>
+            <th>Disciplinas</th>
+            <th>Eventos principales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Biatlón</td>
+            <td class="px-6 py-4 whitespace-nowrap">Biatlón</td>
+            <td class="px-6 py-4">
+              Sprint, individual, relevos, persecución.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Bobsleigh</td>
+            <td class="px-6 py-4 whitespace-nowrap">Skeleton, bobsleigh</td>
+            <td class="px-6 py-4">
+              Doble, cuádruple (competiciones masculinas y femeninas).
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Curling</td>
+            <td class="px-6 py-4 whitespace-nowrap">Curling</td>
+            <td class="px-6 py-4">
+              Individual, dúos, relevos.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Hockey sobre hielo</td>
+            <td class="px-6 py-4 whitespace-nowrap">Hockey sobre hielo</td>
+            <td class="px-6 py-4">Torneo masculino y femenino.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Luge</td>
+            <td class="px-6 py-4 whitespace-nowrap">Luge</td>
+            <td class="px-6 py-4">
+              Individual, doble, relevos.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Patinaje</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              Patinaje artístico, patinaje de velocidad, patinaje de velocidad en pista corta
+            </td>
+            <td class="px-6 py-4">
+              Competiciones masculinas y femeninas.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Esquí de montaña</td>
+            <td class="px-6 py-4 whitespace-nowrap">Esquí de montaña</td>
+            <td class="px-6 py-4">
+              Carrera individual, sprint, relevos.
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">Esquí alpino &amp; relacionado</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              Esquí alpino, esquí de fondo, saltos de esquí, combinada nórdica, esquí acrobático, snowboard
+            </td>
+            <td class="px-6 py-4">
+              Descenso, super-G, gigante, slalom, combinada alpina, sprint, individuales (distintas distancias), relevos, equipos, normal hill, large hill, aerials, moguls, cross, halfpipe, slopestyle, cross, big air.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disciplinas del Atletismo Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #e91e63;
+            --accent-color: #ff4081;
+            --text-color: #333;
+            --background-color: #fff;
+            --section-bg: #fff5f8;
+            --border-color: #f8bbd0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at 50% 50%, #fff5f8 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .intro-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '❀';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(156, 39, 176, 0.2),
+                            0 0 10px rgba(156, 39, 176, 0.2),
+                            0 0 15px rgba(156, 39, 176, 0.2);
+            }
+            to {
+                text-shadow: 0 0 10px rgba(156, 39, 176, 0.3),
+                            0 0 20px rgba(156, 39, 176, 0.3),
+                            0 0 30px rgba(156, 39, 176, 0.3);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-icon {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 20px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid var(--border-color);
+        }
+
+        .section-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .image-container {
+            position: relative;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .image-container::before {
+            content: '❀';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-color);
+            font-size: 2rem;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    <header>
+        <div class="container">
+            <h1>⚡ Atletismo Profesional ⚡</h1>
+            <div class="intro-box">
+                <h2>¿Qué es el Atletismo?</h2>
+                <p>
+                    El atletismo es considerado el deporte más antiguo del mundo y la base de todos los deportes. 
+                    Se trata de un conjunto de disciplinas deportivas que incluyen carreras, saltos y lanzamientos, 
+                    donde los atletas compiten para superar marcas de distancia, altura, velocidad y resistencia. 
+                    Es una manifestación deportiva que combina la fuerza, la velocidad, la resistencia y la técnica 
+                    en su forma más pura.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2 class="section-title">Disciplinas del Atletismo Profesional</h2>
+            <div class="card">
+                <p class="text-center">
+                    Las pruebas que integran una competición de atletismo profesional en la actualidad son: 
+                    <span class="highlight">carreras</span>, 
+                    <span class="highlight">saltos</span> y 
+                    <span class="highlight">lanzamientos</span>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Carreras Section -->
+        <section>
+            <h2 class="section-title">🏃‍♂️ Carreras</h2>
+            <div class="card">
+                <p class="text-center">
+                    Las carreras consisten en alcanzar la meta antes que los demás. El atletismo involucra diferentes tipos de carreras, 
+                    en las que cada atleta o equipo de atletas debe alcanzar la meta antes que sus adversarios, recorriendo a toda velocidad alguna distancia.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="/src/public/carreras.jpg" alt="Carreras de Atletismo" class="section-image">
+            </div>
+
+            <div class="grid">
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-red-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🚀</span>
+                        <h3 class="text-2xl font-bold text-red-700">Carreras de Velocidad</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Son algunas de las pruebas más conocidas del atletismo y han formado parte de este deporte desde sus comienzos. 
+                        Consisten en el recorrido de una distancia que varía entre 100 y 400 metros, en el menor tiempo posible.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🏃</span>
+                        <h3 class="text-2xl font-bold text-blue-700">Carreras de Media Distancia</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        En estas pruebas, la distancia que se debe recorrer se encuentra en el punto intermedio entre las carreras de velocidad 
+                        y las fondistas: entre 800 y 3.000 metros.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-green-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🏃‍♀️</span>
+                        <h3 class="text-2xl font-bold text-green-700">Carreras de Fondo</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Son pruebas que consisten en un recorrido de espacio superior a los 3.000 metros de distancia, 
+                        poniendo a prueba la resistencia física de cada atleta.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🏃‍♂️</span>
+                        <h3 class="text-2xl font-bold text-purple-700">Maratones o Carreras de Larga Distancia</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Son las carreras más intensas y exigentes, en las que se recorre una distancia de 42.195 metros. En este caso, sin embargo, 
+                        los atletas no compiten directamente contra los demás, sino consigo mismos, es decir, contra sus tiempos establecidos, 
+                        para tratar de romper su marca personal.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-yellow-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🏃‍♀️</span>
+                        <h3 class="text-2xl font-bold text-yellow-700">Carreras con Obstáculos</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        También llamadas "carreras de vallas", son competiciones en las que los atletas deben combinar la carrera 
+                        con el salto controlado por encima de una serie de vallas que se encuentran puestas en el camino. 
+                        Pueden ser carreras de 2.000 a 3.000 metros de longitud.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-pink-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🤝</span>
+                        <h3 class="text-2xl font-bold text-pink-700">Carreras de Relevos</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Son pruebas que se compiten en equipos de cuatro atletas cada uno, repartidos a lo largo de la pista a razón de uno cada 100 metros de distancia. 
+                        El propósito es entregar un testigo o talento al siguiente corredor antes que los atletas de los otros equipos, 
+                        ya que el primero en llevar el testigo al punto de partida (cumpliendo la vuelta entera de 400 metros) es el equipo ganador.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-teal-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🏙️</span>
+                        <h3 class="text-2xl font-bold text-teal-700">Carreras en Rutas o Calles</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Estas pruebas no se reconocen como disciplina en los Juegos Olímpicos u otras competiciones. 
+                        Se suelen practicar fuera de la pista o el estadio de atletismo, en rutas, carreteras o calles de un pueblo o ciudad.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl shadow-lg p-8 card-hover border-l-8 border-indigo-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-4xl mr-4">🌲</span>
+                        <h3 class="text-2xl font-bold text-indigo-700">Carreras Campo a Través</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Si bien en la actualidad no son pruebas que se encuentren en los Juegos Olímpicos, sí lo fueron en ediciones anteriores. 
+                        Consisten en el recorrido de una distancia dentro de un circuito natural sin rasgos urbanos. 
+                        Hay modalidades individuales y por equipos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saltos Section -->
+        <section>
+            <h2 class="section-title">🤸‍♂️ Saltos</h2>
+            <div class="card">
+                <p class="text-center">
+                    Los saltos ponen a prueba la fuerza del atleta para empujar el propio cuerpo por el aire.
+                    Los saltos en el atletismo pueden ser de distintos tipos, dependiendo de los implementos con los que el atleta se impulse para saltar.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="/src/public/saltos.jpg" alt="Saltos de Atletismo" class="section-image">
+            </div>
+
+            <div class="grid">
+                <div class="bg-white rounded-2xl shadow-2xl p-10 card-hover border-t-8 border-green-500">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-green-100 p-4 rounded-full mr-6">
+                            <span class="text-3xl">🏃‍♂️</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800">Salto con Pértiga</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        También conocido como "salto con garrocha", consiste en pasar el cuerpo por encima de una barra horizontal en pleno salto, 
+                        ayudándose con una barra larga y flexible llamada "pértiga" o "garrocha", luego de tomar impulso durante una distancia de 30 metros.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-2xl p-10 card-hover border-t-8 border-blue-500">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 p-4 rounded-full mr-6">
+                            <span class="text-3xl">⬆️</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800">Salto de Altura</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Es similar al salto con pértiga, pero se realiza sin la ayuda de ningún instrumento, simplemente tomando impulso 
+                        y luego saltando un listón o barra horizontal. Se repite en tres oportunidades distintas.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-2xl p-10 card-hover border-t-8 border-yellow-500">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-yellow-100 p-4 rounded-full mr-6">
+                            <span class="text-3xl">➡️</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800">Salto de Longitud</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Consiste en saltar la máxima distancia posible sobre un espacio horizontal, a través del impulso conseguido tras un recorrido previo. 
+                        El salto se suele dar sobre una superficie de arena, para medir la distancia total de cada salto con las huellas dejadas por el cuerpo.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-2xl p-10 card-hover border-t-8 border-purple-500">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-purple-100 p-4 rounded-full mr-6">
+                            <span class="text-3xl">🦘</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800">Triple Salto</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Se trata de una variante del salto de longitud, en el que se sigue una secuencia de pasos específica para dar el salto: 
+                        dos saltos preparatorios consecutivos con la pierna no dominante, y luego el impulso final con un cambio de pierna.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lanzamientos Section -->
+        <section>
+            <h2 class="section-title">🥇 Lanzamientos</h2>
+            <div class="card">
+                <p class="text-center">
+                    Los lanzamientos en el atletismo se clasifican según el instrumento que se arroja, pero su lógica es la misma: 
+                    superar la mayor distancia posible con el objeto arrojado.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="/src/public/lanzamientos.jpg" alt="Lanzamientos de Atletismo" class="section-image">
+            </div>
+
+            <div class="grid">
+                <div class="bg-gradient-to-br from-red-50 to-red-200 rounded-2xl p-8 card-hover border-4 border-red-300 shadow-xl">
+                    <div class="text-center mb-6">
+                        <div class="bg-red-500 text-white p-6 rounded-full inline-block mb-4 shadow-lg">
+                            <span class="text-3xl font-bold">🏀</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-red-800">Lanzamiento de Peso</h3>
+                    </div>
+                    <p class="text-red-700 text-center leading-relaxed">
+                        Consiste en el lanzamiento de una bola por parte de un competidor.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-200 rounded-2xl p-8 card-hover border-4 border-blue-300 shadow-xl">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-500 text-white p-6 rounded-full inline-block mb-4 shadow-lg">
+                            <span class="text-3xl font-bold">💿</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-800">Lanzamiento de Disco</h3>
+                    </div>
+                    <p class="text-blue-700 text-center leading-relaxed">
+                        Consiste en el lanzamiento de un objeto con forma circular y de peso pronunciado.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-200 rounded-2xl p-8 card-hover border-4 border-green-300 shadow-xl">
+                    <div class="text-center mb-6">
+                        <div class="bg-green-500 text-white p-6 rounded-full inline-block mb-4 shadow-lg">
+                            <span class="text-3xl font-bold">🏹</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-800">Lanzamiento de Jabalina</h3>
+                    </div>
+                    <p class="text-green-700 text-center leading-relaxed">
+                        Consiste en el lanzamiento de una jabalina hecha con material autorizado.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-200 rounded-2xl p-8 card-hover border-4 border-purple-300 shadow-xl">
+                    <div class="text-center mb-6">
+                        <div class="bg-purple-500 text-white p-6 rounded-full inline-block mb-4 shadow-lg">
+                            <span class="text-3xl font-bold">🔨</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-purple-800">Lanzamiento de Martillo</h3>
+                    </div>
+                    <p class="text-purple-700 text-center leading-relaxed">
+                        Consiste en el lanzamiento de una bola metálica unida a una empuñadura mediante un cable de acero. 
+                        Este objeto se arroja luego de que el atleta da varias vueltas consecutivas sobre su propio eje.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">🏆 El Atletismo</h3>
+            <p>La expresión más pura del deporte y la competición humana</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🏃‍♂️</span>
+                <span class="footer-icon">🤸‍♀️</span>
+                <span class="footer-icon">🥇</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

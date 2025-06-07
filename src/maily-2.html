@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clasificación Olímpica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #9c27b0;
+      --secondary-color: #e91e63;
+      --accent-color: #ff4081;
+      --text-color: #333;
+      --background-color: #fff;
+      --section-bg: #fff5f8;
+      --border-color: #f8bbd0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      background-image: radial-gradient(circle at 50% 50%, #fff5f8 0%, #fff 100%);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      margin: 20px auto 40px;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(156, 39, 176, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(156, 39, 176, 0.3);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '❀';
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: var(--secondary-color);
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+      list-style-type: none;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    ul li::before {
+      content: '✿';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    ul ul li::before {
+      content: '❀';
+      color: var(--secondary-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      background: var(--section-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      font-weight: 500;
+    }
+
+    tr:nth-child(even) td {
+      background-color: rgba(255,255,255,0.5);
+    }
+
+    .note {
+      background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .round-box {
+      background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .round-box:hover {
+      transform: translateY(-5px);
+    }
+
+    strong {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    em {
+      color: var(--secondary-color);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px rgba(156, 39, 176, 0.2),
+                     0 0 10px rgba(156, 39, 176, 0.2),
+                     0 0 15px rgba(156, 39, 176, 0.2);
+      }
+      to {
+        text-shadow: 0 0 10px rgba(156, 39, 176, 0.3),
+                     0 0 20px rgba(156, 39, 176, 0.3),
+                     0 0 30px rgba(156, 39, 176, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="navbar-container"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    <h1>2.Clasificación Olímpica: Ciclo de Calificación 2021–2024</h1>
+
+    <img src="/src/public/torneos olimpicos.avif" alt="Torneos Olímpicos" class="hero-image">
+
+    <div class="round-box">
+      <p>Las plazas para los <strong>Juegos Olímpicos</strong> se asignan durante el ciclo olímpico (los cuatro años previos a la cita), mediante distintos torneos y sistemas de ranking organizados por las federaciones internacionales de cada deporte. A continuación se describen los principales eventos clasificatorios de cada categoría:</p>
+    </div>
+
+    <h2>1. Deportes Individuales</h2>
+    <p>La mayoría de los deportes individuales combinan <strong>Campeonatos Mundiales</strong>, <strong>rankings mundiales</strong> y <strong>torneos continentales</strong>. A continuación se listan ejemplos representativos:</p>
+
+    <h3>1.1 Atletismo (World Athletics)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Atletismo</strong> (años impares, p. ej. 2023, 2025): 
+        <ul>
+          <li>Los primeros 3 clasificados en ciertas pruebas obtienen pase directo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial (World Rankings)</strong>:
+        <ul>
+          <li>Los atletas que no califican por Mundial pueden obtener plaza según su posición en el ranking global.</li>
+          <li>El COI distribuye cupos adicionales para cumplir los estándares mínimos de cada prueba.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (Copa de Europa, Panamericanos, Asia, África, etc.):
+        <ul>
+          <li>En algunas pruebas, el campeón continental garantiza pase directo o suma puntos valiosos.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.2 Natación (World Aquatics)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Natación</strong> (World Aquatics Championships):
+        <ul>
+          <li>Los primeros 2 clasificados en cada prueba (si cumplen el "tiempo A") logran plaza directa.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (Campeonato Europeo, Panamericano, etc.):
+        <ul>
+          <li>Algunos campeones reciben plaza directa o acreditan puntos para el ranking.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Sistema de Tiempos de Corte (Time Standards)</strong>:
+        <ul>
+          <li>Cualquier nadador que alcance el "tiempo A" en competiciones homologadas puede ser inscrito por su federación.</li>
+          <li>Los tiempos "B" y el ranking FINA completan los cupos disponibles.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.3 Natación Artística y Clavados</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Natación Artística y de Clavados</strong>:
+        <ul>
+          <li>Plazas por equipos o duetos, según posición final.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos Clasificatorios FINA</strong> (Europeos, Panamericanos, etc.):
+        <ul>
+          <li>Los ganadores (equipos/parejas) obtienen plaza para los Juegos.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.4 Ciclismo (UCI)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Ciclismo</strong> (ruta, pista, BMX, MTB):
+        <ul>
+          <li>Otorgan plazas directas a países según resultados de sus corredores.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking UCI</strong> (países y atletas):
+        <ul>
+          <li>Basado en puntos acumulados en Copas del Mundo, Clásicas, Grandes Vueltas y Circuitos Mundiales.</li>
+          <li>Los países con mejor ranking obtienen número de plazas asignadas.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Ciclismo</strong>:
+        <ul>
+          <li>Pueden ofrecer plazas adicionales o puntos para el ranking.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.5 Esgrima (FIE)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Esgrima</strong>:
+        <ul>
+          <li>Equipos (florete, espada, sable) que finalizan en puestos privilegiados clasifican al equipo completo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial FIE</strong> (por arma y modalidad):
+        <ul>
+          <li>Los mejores individualmente (top 14 o 16, según arma) clasifican directamente.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos Zonales (Continentales) de Clasificación</strong>:
+        <ul>
+          <li>Los ganadores de cada región (Europa, América, Asia-Oceanía, África) obtienen plaza para su país.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.6 Judo (IJF)</h3>
+    <ul>
+      <li>
+        <strong>Ranking Mundial IJF</strong> (Race to París/Los Ángeles):
+        <ul>
+          <li>Los judocas mejor posicionados en cada categoría clasifican (top 18 + top 2 por continente).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Judo</strong>:
+        <ul>
+          <li>Plazas de "calificación continental" para los mejor posicionados que no entraron por ranking.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos Continental Open/Grand Slams</strong>:
+        <ul>
+          <li>Puntos adicionales que ayudan a mejorar ranking y aspirar a plaza.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.7 Taekwondo (World Taekwondo)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Taekwondo</strong>:
+        <ul>
+          <li>Los primeros cuatro de cada categoría obtienen plaza directa para su país.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial (Olympic Ranking)</strong>:
+        <ul>
+          <li>Los mejores clasificados (top 6 por peso) que no clasificaron en Mundial entran por ranking.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos de Clasificación Continental</strong>:
+        <ul>
+          <li>Los finalistas o semifinalistas, según cupo, consiguen boleto olímpico.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.8 Gimnasia (FIG)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Gimnasia Artística</strong>:
+        <ul>
+          <li>Equipos: los 12 mejores clasifican para París 2024.</li>
+          <li>Individual: medallistas del All-Around o finales por aparatos obtienen plaza para su país.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos de Clasificación por Aparatos y All-Around</strong>:
+        <ul>
+          <li>Puestos privilegiados ofrecen cupos individuales adicionales.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (Copa América de Gimnasia, Campeonatos Europeos):
+        <ul>
+          <li>Plazas limitadas para quienes no obtuvieron pase vía Mundial.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.9 Levantamiento de Pesas (IWF)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Halterofilia</strong>:
+        <ul>
+          <li>Sistema de ranking olímpico por grupo de clasificación (puntos en tres torneos del ciclo).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial IWF</strong> (World Ranking Qualification):
+        <ul>
+          <li>Los líderes del ranking en cada categoría de peso obtienen plaza directa.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos Designados por IWF</strong>:
+        <ul>
+          <li>Los atletas deben participar en un mínimo de eventos puntuables para ser elegibles.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Halterofilia</strong>:
+        <ul>
+          <li>Plazas adicionales para campeones o mejores posicionados fuera del ranking.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.10 Tiro (ISSF)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Tiro</strong>:
+        <ul>
+          <li>Medallistas (top 2 o 3, según prueba) obtienen "Cupos de Cualificación Olímpica" (OQTs).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Copas del Mundo ISSF</strong> (World Cups):
+        <ul>
+          <li>Ganadores (primer lugar) reciben plaza olímpica para su federación.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Tiro</strong> (Copa Europa, Panamericanos):
+        <ul>
+          <li>Plazas adicionales (OQT) a campeones o mejores posicionados.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneo Clasificatorio Final ISSF</strong>:
+        <ul>
+          <li>Último evento mundial para repartir las plazas restantes.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.11 Boxeo (IBA)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Boxeo</strong>:
+        <ul>
+          <li>Semifinalistas (top 4) o finalistas (top 2), según categoría, consiguen pase.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos Continentales de Boxeo</strong> (Combat Qualification Tournament):
+        <ul>
+          <li>Cada zona (África, Asia, Europa, América, Oceanía) organiza torneo donde semifinalistas o finalistas clasifican.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneo Mundial de Clasificación Olímpica</strong>:
+        <ul>
+          <li>Último torneo global que distribuye plazas de boxeo.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>1.12 Powerlifting Paralímpico (IPC)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales IPC Powerlifting</strong>:
+        <ul>
+          <li>Top 3 en cada categoría de peso obtienen plaza.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial Paralímpico</strong>:
+        <ul>
+          <li>Los deportistas mejor posicionados reciben invitación.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales IPC</strong>:
+        <ul>
+          <li>Cupos zonales vía ranking y campeones continentales.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="note">
+      <p><strong>Nota:</strong> Cada deporte tiene límites de cupos por país. Por ejemplo, en atletismo un país puede inscribir hasta 3 atletas por prueba (si todos cumplen criterios), mientras que en natación son 2 nadadores por prueba con "tiempo A".</p>
+    </div>
+
+    <h2>2. Deportes de Equipo</h2>
+    <p>Los deportes colectivos cuentan con <strong>torneos continentales</strong>, <strong>Campeonatos Mundiales</strong> y <strong>Torneos Clasificatorios Finales</strong>. A continuación, algunos ejemplos:</p>
+
+    <h3>2.1 Fútbol (FIFA)</h3>
+    <ul>
+      <li>
+        <strong>Preolímpicos Sub-23</strong> (cada confederación):
+        <ul>
+          <li><em>Sudamérica:</em> Preolímpico Sudamericano (Argentina 2020 pospuesto a 2021) – finalistas clasificaron a Tokio.</li>
+          <li><em>Concacaf:</em> Preolímpico Concacaf (EE. UU. 2020) – plazas para EE. UU. y México.</li>
+          <li><em>Europa:</em> Euro Sub-21 (usado como torneo clasificatorio); semifinalistas o finalistas obtienen plaza.</li>
+          <li><em>Asia, África, Oceanía:</em> Torneos preolímpicos específicos con cupos asignados.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Preolímpico Femenino</strong> (varía según confederación):
+        <ul>
+          <li>En algunas confederaciones, el Mundial Sub-20 es clasificatorio; en otras, hay torneos específicos (Concacaf, Conmebol, etc.).</li>
+          <li>Los equipos que lleguen a semifinales o finales obtienen plaza.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.2 Baloncesto (FIBA)</h3>
+    <ul>
+      <li>
+        <strong>Copa Mundial de Baloncesto FIBA</strong>:
+        <ul>
+          <li>Equipos finalistas o top designados por continente clasifican directamente.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Baloncesto</strong> (EuroBasket, AmeriCup, AfroBasket, Asia Cup, Oceania):
+        <ul>
+          <li>Algunos finalistas o semifinalistas obtienen plaza según cupos por continente.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Olympic Qualifying Tournaments (OQT)</strong>:
+        <ul>
+          <li>Tres torneos de 6 equipos cada uno; el campeón de cada OQT se asegura plaza olímpica.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.3 Voleibol (FIVB)</h3>
+    <ul>
+      <li>
+        <strong>Intercontinental Olympic Qualification Tournament</strong>:
+        <ul>
+          <li>Se forman grupos regionales (6 equipos cada uno); el ganador de cada grupo obtiene plaza.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (Champions Cup, Continental Qualification Tournament):
+        <ul>
+          <li>El campeón continental (y a veces subcampeón) clasifica directamente.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Liga de Naciones de Voleibol (VNL)</strong>:
+        <ul>
+          <li>Los mejores equipos, combinados con torneos intercontinentales, completan el ranking para los clasificatorios.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.4 Hockey sobre Césped (FIH)</h3>
+    <ul>
+      <li>
+        <strong>Copa Mundial de Hockey</strong>:
+        <ul>
+          <li>Finalistas o top designados por continente obtienen plaza directa.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Torneos de Clasificación FIH (Olympic Qualifiers)</strong>:
+        <ul>
+          <li>Equipos clasifican según ranking global y compiten por plazas restantes.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (EuroHockey, Asia Cup, Pan American Games, Champions Trophy África):
+        <ul>
+          <li>El campeón de cada continente obtiene plaza directa.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.5 Balonmano (IHF)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Balonmano</strong>:
+        <ul>
+          <li>El campeón y subcampeones (según cupos asignados) clasifican directo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Olympic Qualification Tournaments (IHF)</strong>:
+        <ul>
+          <li>Tres torneos de 6 equipos cada uno; los dos mejores de cada torneo logran plaza (6 en total).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong> (Africano, Europeo, Asía, Panamericano):
+        <ul>
+          <li>Si los cupos no se completan en Mundial, se asigna plaza a campeones continentales.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.6 Rugby Sevens (World Rugby)</h3>
+    <ul>
+      <li>
+        <strong>World Rugby Sevens Series</strong>:
+        <ul>
+          <li>Los mejores 4–5 equipos (dependiendo de la ventana) consiguen plaza directa.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Rugby Sevens</strong> (Europa, Asia, África, Concacaf/Océano):
+        <ul>
+          <li>El campeón continental (y a veces subcampeón) clasifica.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Final Olympic Qualification Tournament</strong>:
+        <ul>
+          <li>Los equipos no clasificados compiten por las últimas plazas disponibles.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.7 Vela (World Sailing)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Vela</strong> (por clase olímpica):
+        <ul>
+          <li>Los primeros finalistas en cada clase (Laser, 470, RS:X, etc.) aseguran plaza para su país.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Vela</strong> (Europeo, Panamericano, Asiático):
+        <ul>
+          <li>Se otorgan plazas a medallistas según asignación continental.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Last Chance Regatta</strong>:
+        <ul>
+          <li>Regata final donde las naciones compiten por las últimas plazas en cada clase.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.8 Remo (World Rowing)</h3>
+    <ul>
+      <li>
+        <strong>Campeonatos Mundiales de Remo</strong> (preolímpico):
+        <ul>
+          <li>Los primeros finalistas en cada modalidad clasifican su embarcación para los Juegos.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Regatas Continentales de Calificación</strong> (Europa, Panamericana, África, Asia):
+        <ul>
+          <li>Los finalistas obtienen plazas adicionales para sus países.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Regata Final de Clasificación Mundial</strong>:
+        <ul>
+          <li>Último torneo para asignar las plazas que quedan disponibles.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.9 Hockey sobre Hielo (IIHF) – Juegos Olímpicos de Invierno</h3>
+    <ul>
+      <li>
+        <strong>Campeonato Mundial de Hockey</strong> (divisiones A y C):
+        <ul>
+          <li>El campeón mundial (y a veces subcampeones) clasifica directo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial IIHF</strong>:
+        <ul>
+          <li>Permite la entrada de algunas naciones según su posición global.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Division I/II Tournaments</strong>:
+        <ul>
+          <li>Los ganadores de cada grupo de Division I A clasifican; en Div. I B y Div. II se otorgan invitaciones según vacantes.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.10 Bobsleigh, Luge, Skeleton (IBSF, FIL) – Juegos Olímpicos de Invierno</h3>
+    <ul>
+      <li>
+        <strong>Copa del Mundo (Circuito Mundial) de cada disciplina</strong>:
+        <ul>
+          <li>Los atletas/mejores equipos en ranking global obtienen plaza.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Mundiales y Continentales</strong>:
+        <ul>
+          <li>Plazas para países que no acceden por ranking, según resultados en Mundiales o eventos continentales.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Last Chance Qualification</strong> (torneo final de IBSF/FIL):
+        <ul>
+          <li>Compiten los que aún no tienen plaza por ranking o continental por las vacantes restantes.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>3. Eventos Mixtos y Disciplinas Nuevas</h2>
+    <p>Algunas modalidades combinan varios criterios: <strong>Campeonatos Mundiales</strong>, <strong>campeonatos continentales</strong> y <strong>rankings específicos</strong>.</p>
+
+    <h3>3.1 Pentatlón Moderno (UIPM)</h3>
+    <ul>
+      <li>
+        <strong>Campeonato Mundial de Pentatlón Moderno</strong>:
+        <ul>
+          <li>Top 3 del Mundial clasifican directamente.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales UIPM</strong>:
+        <ul>
+          <li>Campeones de cada continente obtienen pase.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ranking Mundial UIPM</strong>:
+        <ul>
+          <li>Los mejores ubicados (top 6–8, según remanentes) califican si no entraron por Mundial o continental.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3.2 Triatlón (World Triathlon)</h3>
+    <ul>
+      <li>
+        <strong>World Triathlon Series</strong>:
+        <ul>
+          <li>Los 26 mejores triatletas (por género) en el ranking global aseguran pase directo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales de Triatlón</strong>:
+        <ul>
+          <li>Otorgan plazas continentales (usualmente 5 plazas por continente).</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Continental Olympic Qualification Event</strong>:
+        <ul>
+          <li>Evento final para asignar plazas finales a nivel mundial y continental.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3.3 Badminton (BWF)</h3>
+    <ul>
+      <li>
+        <strong>Ranking Mundial BWF</strong>:
+        <ul>
+          <li>Los 34 primeros en singles y los 16–24 en dobles (por género) obtienen plaza directa.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campeonatos Continentales</strong>:
+        <ul>
+          <li>El campeón de cada continente recibe plaza si no está en el ranking.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Continental Qualification Tournaments</strong>:
+        <ul>
+          <li>Última oportunidad regional para asignar cupos zonales.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3.4 Tenis (ITF / ATP / WTA)</h3>
+    <ul>
+      <li>
+        <strong>Ranking Mundial Olímpico</strong> (basado en ATP y WTA):
+        <ul>
+          <li>Los 56 mejores en singles (masculino y femenino) clasifican según ranking al cierre de la ventana.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Copa Davis y Billie Jean King Cup</strong>:
+        <ul>
+          <li>Para ser elegible, el jugador debe representar a su país en estos torneos mínimo un número de veces en el ciclo.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Invitaciones ITF</strong>:
+        <ul>
+          <li>Se otorgan plazas a países con poca representación o para completar cuadro de 64 jugadores.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>3.5 Polo Acuático (FINA)</h3>
+    <ul>
+      <li>
+        <strong>Copa Mundial de Natación (Water Polo World Championships)</strong>:
+        <ul>
+          <li>Top 3 en masculino y femenino obtienen plaza.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Preolímpico Continental</strong> (Europa, América, Asia, África, Oceanía):
+        <ul>
+          <li>Campeones y subcampeones (según cupo) clasifican.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Olympic Qualification Tournament (FINA)</strong>:
+        <ul>
+          <li>Los equipos que no clasificaron por Mundial o continental compiten por las plazas restantes.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>4. Otros Factores y Consideraciones Generales</h2>
+    <p>Aparte de los torneos específicos, existen mecanismos que garantizan diversidad y plazas para países con menor tradición deportiva:</p>
+
+    <h3>4.1 Cupos por País</h3>
+    <ul>
+      <li>En la mayoría de deportes individuales existe un <strong>límite de plazas por nación</strong> (p. ej., en atletismo hasta 3 atletas por prueba; en natación, 2 nadadores por prueba con "tiempo A").</li>
+      <li>En deportes de equipo cada país puede clasificar solo un equipo por género.</li>
+    </ul>
+
+    <h3>4.2 Plazas Tripartitas y Universales</h3>
+    <ul>
+      <li><strong>Invitaciones Tripartitas del COI:</strong> Cupos reservados para naciones con baja representación deportiva (Atletismo, Natación, Judo, Taekwondo).</li>
+      <li><strong>Plazas Universales:</strong> Garantizan que al menos un atleta de cada continente o región participe en determinadas disciplinas.</li>
+    </ul>
+
+    <h3>4.3 Fechas Clave del Ciclo Olímpico</h3>
+    <table>
+      <tr>
+        <th>Fase</th>
+        <th>Periodo (años del ciclo)</th>
+        <th>Descripción</th>
+      </tr>
+      <tr>
+        <td><strong>Año 1–2</strong></td>
+        <td>2021–2022</td>
+        <td>Inician torneos mundiales y continentales; se acumulan puntos de ranking sin plazas definitivas.</td>
+      </tr>
+      <tr>
+        <td><strong>Año 2–3</strong></td>
+        <td>2022–2023</td>
+        <td>Primera ventana de plazas directas en Mundiales; campeonatos continentales comienzan a otorgar pases.</td>
+      </tr>
+      <tr>
+        <td><strong>Año 3–4</strong></td>
+        <td>2023–2024</td>
+        <td>Periodo principal de clasificación: mundiales, continentales y torneos de repesca definen la mayoría de plazas.</td>
+      </tr>
+      <tr>
+        <td><strong>Últimos 6 meses</strong></td>
+        <td>Finales de 2023 – Junio 2024</td>
+        <td>Se cierra ranking, se disputan torneos "Last Chance" y se completan cupos finales antes de los Juegos.</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <p><strong>Importante:</strong> Las fechas concretas varían por disciplina y edición. Cada federación internacional establece el calendario oficial, siempre respetando la ventana de inscripción final definida por el COI (generalmente entre 30 y 60 días antes de la inauguración).</p>
+    </div>
+  </div>
+</body>
+</html>

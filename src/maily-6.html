@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Atletismo - Línea de Tiempo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .timeline-line {
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        .event-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .year-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .bg-gradient-mesh {
+            background: radial-gradient(circle at 20% 80%, #3b82f6 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #8b5cf6 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #ec4899 0%, transparent 50%),
+                        linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        .icon-bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-30px,0);
+            }
+            70% {
+                transform: translate3d(0,-15px,0);
+            }
+            90% {
+                transform: translate3d(0,-4px,0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh min-h-screen text-white overflow-x-hidden">
+    <div id="navbar-container"></div>
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    <!-- Header Hero -->
+    <div class="relative py-20 text-center">
+        <div class="floating-animation">
+            <h1 class="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent glow-text mb-4">
+                ATLETISMO
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto px-4">
+                Un viaje épico a través de la historia del deporte más puro y emocionante
+            </p>
+        </div>
+        <div class="icon-bounce mt-12">
+            <div class="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2L3 7v11a1 1 0 001 1h3.25v-6h5.5v6H16a1 1 0 001-1V7l-7-5z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative max-w-6xl mx-auto px-4 pb-20">
+        <!-- Central Line -->
+        <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-1 timeline-line h-full"></div>
+        
+        <!-- Timeline Events -->
+        <div class="space-y-16" id="timeline">
+            <!-- Antigua Grecia -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            776 A.C.
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                            🏺 Primeros Juegos Olímpicos
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            En la antigua Olimpia, Grecia, nacen los primeros Juegos Olímpicos. El atletismo incluía carreras de velocidad, lanzamiento de disco y jabalina, salto de longitud y lucha.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Era Moderna -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1896
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                            🏛️ Juegos Olímpicos Modernos
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Pierre de Coubertin revive los Juegos Olímpicos en Atenas. El atletismo se convierte en el corazón de la competición con 12 eventos masculinos.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- IAAF -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1912
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                            🌍 Fundación de la IAAF
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Se crea la Asociación Internacional de Federaciones de Atletismo (IAAF), estableciendo las reglas universales y los primeros récords mundiales oficiales.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Mujeres -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1928
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+                            👩‍🏃‍♀️ Debut Femenino Olímpico
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Las mujeres compiten por primera vez en atletismo olímpico en Ámsterdam, participando en 5 eventos: 100m, 800m, 4x100m, salto alto y lanzamiento de disco.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Jesse Owens -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1936
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                            ⚡ Jesse Owens en Berlín
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Jesse Owens conquista 4 medallas de oro en los Juegos de Berlín, desafiando la ideología nazi y convirtiéndose en una leyenda del atletismo mundial.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Roger Bannister -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1954
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-red-400 to-pink-500 bg-clip-text text-transparent">
+                            🏃‍♂️ Barrera de los 4 minutos
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Roger Bannister rompe la mítica barrera de los 4 minutos en la milla (3:59.4), demostrando que los límites humanos pueden ser superados.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-red-400 to-pink-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Campeonatos Mundiales -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1983
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+                            🏆 Primeros Mundiales
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Se celebran los primeros Campeonatos Mundiales de Atletismo en Helsinki, creando la segunda competición más importante después de los Juegos Olímpicos.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Florence Griffith -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            1988
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
+                            💨 Florence Griffith-Joyner
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            "Flo-Jo" establece récords mundiales en 100m (10.49) y 200m (21.34) que permanecen imbatidos hasta hoy, redefiniendo la velocidad femenina.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Usain Bolt -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            2008-2017
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                            ⚡ Era de Usain Bolt
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            El jamaicano revoluciona la velocidad mundial con récords en 100m (9.58), 200m (19.19) y 4x100m, ganando 8 oros olímpicos y 11 mundiales.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+
+            <!-- Era Digital -->
+            <div class="timeline-event fade-in-up flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
+                    <div class="event-card p-8 rounded-3xl ml-16 md:ml-0">
+                        <div class="year-badge inline-block px-6 py-2 rounded-full text-sm font-bold mb-4">
+                            2020-2025
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                            🚀 Atletismo del Futuro
+                        </h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            La tecnología revoluciona el atletismo: cronometraje láser, análisis biomecánico avanzado, vestimenta inteligente y nuevos formatos como la Diamond League.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border-4 border-gray-900 order-1 md:order-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center py-12 border-t border-gray-800">
+        <p class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-4">
+            El atletismo continúa evolucionando...
+        </p>
+        <p class="text-gray-400">
+            Cada carrera, cada salto, cada lanzamiento escriben una nueva página en esta increíble historia.
+        </p>
+    </div>
+
+    <script>
+        // Animación de aparición progresiva
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos de la timeline
+        document.querySelectorAll('.timeline-event').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const elements = document.querySelectorAll('.floating-animation');
+            
+            elements.forEach(el => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Hover effects adicionales
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.25)';
+                card.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.1)';
+                card.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            });
+        });
+    </script>
+</body>
+</html>

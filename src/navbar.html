@@ -1,0 +1,154 @@
+<!-- Barra de Navegación -->
+<link rel="stylesheet" href="styles.css">
+
+<nav class="nav-container">
+    <div class="max-w-5xl mx-auto">
+        <!-- Mensaje para el profesor -->
+        <div class="text-center">
+            <h2 class="greeting-title">¡Holi Profe! 👋</h2>
+            <p class="greeting-subtitle">Aqui estan todas las preguntas con sus respectivas respuestas¡Espero que te gusten! 💖</p>
+        </div>
+
+        <!-- Contador de preguntas -->
+        <div class="question-counter">
+            Total de preguntas: 8
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="button-grid">
+            <a href="maily.html" class="nav-button" id="nav-1">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">1</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Juegos Olímpicos</span>
+                            <span class="question-subtitle">Introducción</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-2.html" class="nav-button" id="nav-2">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">2</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Clasificación</span>
+                            <span class="question-subtitle">Ciclo 2021-2024</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-3.html" class="nav-button" id="nav-3">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">3</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Línea de Tiempo</span>
+                            <span class="question-subtitle">Historia Olímpica</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-4.html" class="nav-button" id="nav-4">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">4</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Tablas</span>
+                            <span class="question-subtitle">Verano e Invierno</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-5.html" class="nav-button" id="nav-5">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">5</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Deportes</span>
+                            <span class="question-subtitle">Clasificación</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-6.html" class="nav-button" id="nav-6">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">6</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Atletismo</span>
+                            <span class="question-subtitle">Pruebas</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-7.html" class="nav-button" id="nav-7">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">7</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Galería</span>
+                            <span class="question-subtitle">Fotos Atletismo</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+            <a href="maily-8.html" class="nav-button" id="nav-8">
+                <button>
+                    <div class="flex items-center justify-between">
+                        <div class="relative">
+                            <span class="question-label">Pregunta</span>
+                            <span class="question-number">8</span>
+                            <div class="pulse-dot"></div>
+                        </div>
+                        <div class="text-right">
+                            <span class="question-title">Pruebas</span>
+                            <span class="question-subtitle">Detalles Técnicos</span>
+                        </div>
+                    </div>
+                </button>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Obtener el nombre del archivo actual
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    // Activar el botón correspondiente
+    const navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        if (button.getAttribute('href') === currentPage) {
+            button.classList.add('active');
+        }
+    });
+</script> 
