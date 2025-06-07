@@ -1,173 +1,154 @@
 /* Estilos generales */
 .nav-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
+    padding: 2rem;
+    background: linear-gradient(135deg, #fff5f7 0%, #fff0f6 100%);
     border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(249, 168, 212, 0.1);
-    border: 1px solid rgba(249, 168, 212, 0.2);
-    padding: 1.5rem;
-    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 6px rgba(244, 114, 182, 0.1);
 }
 
-/* Estilos del contador */
+/* Estilos para el título y subtítulo */
+.greeting-title {
+    font-size: 2rem;
+    color: #be185d;
+    margin-bottom: 0.5rem;
+}
+
+.greeting-subtitle {
+    color: #db2777;
+    font-size: 1.1rem;
+}
+
+/* Estilos para el contador de preguntas */
 .question-counter {
-    background: linear-gradient(135deg, #f472b6, #ec4899);
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+    background: #fce7f3;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
     text-align: center;
-    margin: 1.5rem auto;
-    max-width: fit-content;
+    margin: 1rem 0;
+    color: #be185d;
+    font-weight: 600;
 }
 
-/* Estilos de los botones */
+/* Estilos para la cuadrícula de botones */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Estilos para los botones de navegación */
 .nav-button {
     text-decoration: none;
-    display: block;
-    width: 100%;
+    color: inherit;
 }
 
 .nav-button button {
     width: 100%;
-    background: linear-gradient(135deg, #ffffff, #fdf2f8);
+    padding: 1rem;
+    background: white;
     border: 2px solid #fbcfe8;
     border-radius: 0.75rem;
-    padding: 1rem;
-    color: #db2777;
-    font-weight: 500;
-    transform: translateY(0);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-button button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #fce7f3, #fbcfe8);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .nav-button button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 114, 182, 0.2);
     border-color: #f472b6;
-    box-shadow: 0 8px 20px rgba(249, 168, 212, 0.2);
+    background: #fff0f6;
 }
 
-.nav-button button:hover::before {
-    opacity: 1;
+/* Estilos para los iconos */
+.nav-button i {
+    margin-right: 0.5rem;
+    color: #ec4899;
 }
 
-.nav-button button:active {
-    transform: translateY(1px) scale(0.98);
-    background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+.question-label i {
+    color: #be185d;
 }
 
-/* Estilos del número de pregunta */
+/* Estilos para el número de pregunta */
 .question-number {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #ec4899, #db2777);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-    display: inline-block;
-}
-
-/* Punto pulsante */
-.pulse-dot {
     position: absolute;
     top: -0.5rem;
     right: -0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: #f472b6;
+    background: #ec4899;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Estilos para el punto pulsante */
+.pulse-dot {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #f472b6;
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7);
-    }
-    
-    70% {
         transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(244, 114, 182, 0);
+        opacity: 1;
     }
-    
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
     100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Estilos del texto */
-.question-label {
-    font-size: 0.875rem;
-    color: #ec4899;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
+/* Estilos para el botón activo */
+.nav-button.active button {
+    background: #fce7f3;
+    border-color: #ec4899;
 }
 
+.nav-button.active .question-title {
+    color: #be185d;
+}
+
+/* Estilos para los títulos y subtítulos de las preguntas */
 .question-title {
-    font-size: 0.75rem;
-    color: #ec4899;
-    font-weight: 500;
+    display: block;
+    font-weight: 600;
+    color: #be185d;
     margin-bottom: 0.25rem;
 }
 
 .question-subtitle {
+    display: block;
     font-size: 0.875rem;
     color: #db2777;
-    font-weight: 600;
 }
 
-/* Botón activo */
-.nav-button.active button {
-    background: linear-gradient(135deg, #fce7f3, #fbcfe8);
-    border-color: #ec4899;
-    box-shadow: 0 0 0 2px #fce7f3, 0 0 0 4px #f472b6;
-}
-
-/* Grid de botones */
-.button-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-}
-
-@media (min-width: 768px) {
+/* Estilos responsivos */
+@media (max-width: 640px) {
     .button-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
-}
-
-@media (min-width: 1024px) {
-    .button-grid {
-        grid-template-columns: repeat(4, 1fr);
+    
+    .greeting-title {
+        font-size: 1.5rem;
     }
-}
-
-/* Título y subtítulo */
-.greeting-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: #ec4899;
-    margin-bottom: 0.5rem;
-}
-
-.greeting-subtitle {
-    font-size: 1.125rem;
-    color: #6b7280;
-    margin-bottom: 2rem;
+    
+    .greeting-subtitle {
+        font-size: 1rem;
+    }
 } 
